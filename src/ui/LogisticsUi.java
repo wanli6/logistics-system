@@ -111,7 +111,7 @@ public class LogisticsUi extends JFrame implements ActionListener, ChangeListene
     private JButton btnAddTruckToLog = new JButton("添加到本公司");
     private JButton btnDelTruck = new JButton("删除");
 
-    private JLabel info7 = new JLabel("搜索车辆到达信息（通过车牌）：");
+    private JLabel info7 = new JLabel("搜索车辆信息（通过车牌）：");
     private JTextField text7 = new JTextField();
     private JButton button7 = new JButton("模糊搜索");
     private JLabel label7 = new JLabel("文件名:");
@@ -160,7 +160,7 @@ public class LogisticsUi extends JFrame implements ActionListener, ChangeListene
         tabbedPane.addTab("4.本公司车辆", card4);
         tabbedPane.addTab("5.管理车辆", card5);
         tabbedPane.addTab("6.添加车辆", card6);
-        tabbedPane.addTab("7.抵达信息", card7);
+        tabbedPane.addTab("7.保存信息", card7);
         tabbedPane.setSelectedIndex(defaultCard);
         tabbedPane.setEnabledAt(0, false);
 
@@ -653,7 +653,7 @@ public class LogisticsUi extends JFrame implements ActionListener, ChangeListene
                 String tableArrive = new String("<html><style>"
                         + "table{margin-top:0px;padding-left:80px;}"
                         + "td{width:170px;}</style>"
-                        + "<table><tr><td>货车编号</td><td>货车车牌</td><td>发车时间</td><td>到达时间</td><td>站点电话</td><td>站点名称</td><td>站点地址</td></tr>");
+                        + "<table><tr><td>货车编号</td><td>货车车牌</td><td>发车时间</td><td>到达时间</td><td>站点编号</td><td>站点名称</td><td>站点地址</td></tr>");
 
                 list = arriveDao.queryMsgByNum(text7.getText());
                 for(Object[] o : list){
