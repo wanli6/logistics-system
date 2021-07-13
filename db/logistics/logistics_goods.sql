@@ -1,0 +1,61 @@
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
+--
+-- Host: localhost    Database: logistics
+-- ------------------------------------------------------
+-- Server version	8.0.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `goods`
+--
+
+DROP TABLE IF EXISTS `goods`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `goods` (
+  `id` int NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `type` varchar(30) DEFAULT NULL,
+  `weight` int NOT NULL,
+  `receivetel` char(11) NOT NULL,
+  `cost` int NOT NULL,
+  `c_id` int NOT NULL,
+  `t_id` int DEFAULT '-1',
+  PRIMARY KEY (`id`),
+  KEY `fk_gc_id_idx` (`c_id`),
+  KEY `fk_gt_id_idx` (`t_id`),
+  CONSTRAINT `fk_gc_id` FOREIGN KEY (`c_id`) REFERENCES `consignor` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_gt_id` FOREIGN KEY (`t_id`) REFERENCES `trucks` (`id`) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `goods`
+--
+
+LOCK TABLES `goods` WRITE;
+/*!40000 ALTER TABLE `goods` DISABLE KEYS */;
+INSERT INTO `goods` VALUES (101,'纸箱','小件',1000,'13419465156',500,2401,201),(102,'配件','托盘',800,'15545678912',860,2402,202),(103,'风机','托盘',2500,'15489632141',1000,2403,203),(104,'电动车','中件',2000,'14523698745',1200,2404,204),(105,'器械','大件',5000,'15632002109',600,2405,205),(106,'棉纱','小件',2000,'15847963478',700,2406,206),(107,'钢板','大件',2000,'13012897447',900,2407,207),(108,'纸质餐具','托盘',500,'15036945600',450,2408,208),(109,'零食','托盘',1000,'18647961478',700,2409,0),(110,'饲料','小件',2000,'14589630147',910,2410,0),(111,'货3','纸箱',12300,'14236975214',12300,2401,0),(112,'货2','托盘',3300,'12345678910',1100,2401,0);
+/*!40000 ALTER TABLE `goods` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-07-13 12:45:36
